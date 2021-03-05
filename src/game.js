@@ -6,7 +6,24 @@ class Game {
         this.playersTurn 
     }
     evaluateBoard() {
-        //win/lose/draw ?
+        // for (var i = 0; i < this.gameBoard.length; i++) {
+        //     if ( all three in row the same ) {
+        //         winner
+        //     }
+        //     if ( all three in a column the same ) {
+        //         winner
+        //     }
+        //     if ( diagonal 1/5/9 ) {
+        //         winner
+        //     }
+        //     if ( diagonal 3/5/7 ) {
+        //         winner
+        //     }
+        //     if ( none of those && gameboard full ) {
+        //         draw
+        //     }
+        // } 
+       
         //if win - call playerone.saveswinstostorage()
     }
 
@@ -22,6 +39,8 @@ class Game {
         //change this.gameBoard to 9 nulls
     }
 }
+
+
 
 // A Game should include:
 // Two Player instances x
