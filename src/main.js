@@ -11,3 +11,6 @@ playerOne.saveWinsToStorage([null, null, null, "o", "o", "o", null, "x", "x"]);
 playerTwo.saveWinsToStorage(["o", "o", "o", null, "x", null, "x", null, null]);
 
 console.log(playerOne.retrieveWinsFromStorage()); 
+
+var newGame = new Game();
+newGame.evaluateBoard();
