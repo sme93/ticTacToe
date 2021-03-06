@@ -73,6 +73,7 @@ class Game {
     }
 
     resetBoard() {
+        this.gameBoard = [];
         console.log("reset board");
     }
 }

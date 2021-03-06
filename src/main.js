@@ -1,8 +1,9 @@
-// renderPage() 
-//handle move
+var game;
 
 var gameBoard = document.querySelector("#gameBoard");
 var currentGameState = document.querySelector("#currentGameState");
+var gameBoardInputs = document.querySelectorAll("input");
+
 
 
 gameBoard.addEventListener("click", handleTurn);
@@ -28,6 +29,13 @@ function renderWins() {
    //get from storage, print to page
 }
 
+function clearGameBoard() {
+    for (var input of gameBoardInputs) {
+       input.disabled = false; 
+       input.placeholder = "";
+    }
+}
+
 function renderCurrentPlayersTurn() {
     currentGameState.innerHTML = `${game.playersTurn}'s turn`
 }
@@ -41,35 +49,15 @@ function handleTurn(event) {
         arrayIndex: currentlySelectedBox,
         playerId: game.playersTurn,
     });
-    game.evaluateBoard();
     event.target.disabled = true;
     event.target.placeholder = game.playersTurn;
+    game.evaluateBoard();
+    if (game.gameBoard.length === 0) {
+        clearGameBoard();
+    }
     game.toggleTurn();
     renderCurrentPlayersTurn();
-    //console.log(event.target.id);
- //console.log("event ", event.target.disabled);
- //console.log("target ", target);
- //console.log("game ", game);
 }
 
-// console.log(playerOne);
-// playerOne.saveWinsToStorage(['x', 'x', 'x', 'o', 'o', 'x', 'o', 'x', 'o']);
-// playerTwo.saveWinsToStorage(['x', 'x', 'x', 'o', 'o', 'x', 'o', 'x', 'x']);
-// playerOne.saveWinsToStorage([null, null, null, "o", "o", "o", null, "x", "x"]);
-// playerTwo.saveWinsToStorage(["o", "o", "o", null, "x", null, "x", null, null]);
 
-// console.log(playerOne.retrieveWinsFromStorage()); 
 
-var game;
-//game.evaluateBoard();
-var newObject = {
-    arrayIndex: 1,
-    playerId: "x"
-}
-
-var emptyObject = {
-    arrayIndex: 7,
-    playerId: null,
-}
-
-var someArray = [newObject, emptyObject]
