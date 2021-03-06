@@ -34,8 +34,20 @@ class Game {
         }
         playerOneMoves.sort(compareNumbers);
         playerTwoMoves.sort(compareNumbers);
-       console.log(playerOneMoves.toString());
-       console.log(playerTwoMoves.toString());
+        var playerOneMovesAsString = playerOneMoves.toString();
+        var playerTwoMovesAsString = playerTwoMoves.toString();
+        // console.log("p1", playerOneMovesAsString);
+        // console.log("p2", playerTwoMovesAsString);
+
+        for (var i = 0; i < winningBoards.length; i++) {
+            if (playerOneMovesAsString.includes(winningBoards[i])) {
+               this.saveWinToPlayer("player one");
+            }
+            if (playerTwoMovesAsString.includes(winningBoards[i])) {
+                this.saveWinToPlayer("player two");
+            }
+        } 
+
        // if win - call playerone.saveswinstostorage()
     }
 
@@ -48,12 +60,20 @@ class Game {
         //console.log(this.playersTurn);
     }
 
-    saveWinToPlayer() {
-        //?
+    saveWinToPlayer(winningPlayer) {
+        if (winningPlayer === "player one") {
+            console.log("player one");
+            this.playerOne.saveWinsToStorage();
+            this.resetBoard();
+        } else {
+            this.playerTwo.saveWinsToStorage();
+            console.log("player two");
+            this.resetBoard();
+        }
     }
 
     resetBoard() {
-        //change this.gameBoard to 9 nulls
+        console.log("reset board");
     }
 }
 
