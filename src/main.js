@@ -6,6 +6,11 @@ var currentGameState = document.querySelector("#currentGameState");
 
 
 gameBoard.addEventListener("click", handleTurn);
+gameBoard.addEventListener("keydown", function(event){
+    if (event.code === "Space") {
+        handleTurn(event);
+    }
+});
 window.addEventListener("load", startGame);
 
 function startGame() {
@@ -24,11 +29,17 @@ function renderCurrentPlayersTurn() {
 }
 
 function handleTurn(event) {
-    var target = parseInt(event.target.id);
- console.log("target ", target);
+    if (event.target.disabled) {
+        return
+    }
+    event.target.disabled = true;
+    event.target.placeholder = newGame.playersTurn;
     newGame.toggleTurn();
- console.log("newGame ", newGame);
- renderCurrentPlayersTurn();
+    renderCurrentPlayersTurn();
+ //console.log("event ", event.target.disabled);
+    var arrayIndex = parseInt(event.target.id);
+ //console.log("target ", target);
+ //console.log("newGame ", newGame);
 }
 
 var playerOne = new Player("one", "emoji", []);
