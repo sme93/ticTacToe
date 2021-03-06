@@ -6,29 +6,36 @@ class Game {
         this.playersTurn = "x";
     }
     evaluateBoard() {
+        if (this.gameBoard.length < 5) {
+            return;
+        }
 
-        var winningBoards = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], 
-        [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-
-        for (var i = 0; i < 10; i++) {
-            console.log("hello");
-            // if ( all three in row the same ) {
-            //     winner
-            // }
-            // if ( all three in a column the same ) {
-            //     winner
-            // }
-            // if ( diagonal 1/5/9 ) {
-            //     winner
-            // }
-            // if ( diagonal 3/5/7 ) {
-            //     winner
-            // }
-            // if ( none of those && gameboard full ) {
-            //     draw
-            // }
+        var winningBoards = [
+            "0,1,2",
+            "3,4,5", 
+            "6,7,8", 
+            "0,3,6", 
+            "1,4,7", 
+            "2,5,8", 
+            "0,4,8", 
+            "2,4,6"
+        ];
+        var playerOneMoves = [];
+        var playerTwoMoves = [];
+        for (var i = 0; i < this.gameBoard.length; i++) {
+            if (this.gameBoard[i].playerId === "x") {
+                playerOneMoves.push(this.gameBoard[i].arrayIndex);
+            } else {
+                playerTwoMoves.push(this.gameBoard[i].arrayIndex);
+            }
         } 
-       
+        function compareNumbers(a, b) {
+            return a - b;
+        }
+        playerOneMoves.sort(compareNumbers);
+        playerTwoMoves.sort(compareNumbers);
+       console.log(playerOneMoves.toString());
+       console.log(playerTwoMoves.toString());
        // if win - call playerone.saveswinstostorage()
     }
 
