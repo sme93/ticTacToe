@@ -1,9 +1,9 @@
 class Game {
-    constructor() {
+    constructor(playersTurn) {
         this.playerOne
         this.playerTwo
-        this.gameBoard = [1];
-        this.playersTurn 
+        this.gameBoard = [];
+        this.playersTurn = playersTurn;
     }
     evaluateBoard() {
 
@@ -33,7 +33,12 @@ class Game {
     }
 
     toggleTurn() {
-        //?
+        if (this.playersTurn === "x") {
+            this.playersTurn = "o";
+        } else {
+            this.playersTurn = "x";
+        } 
+        console.log(this.playersTurn);
     }
 
     saveWinToPlayer() {

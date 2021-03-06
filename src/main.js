@@ -1,6 +1,17 @@
 // renderPage() 
 //handle move
 
+var gameBoard = document.querySelector("#gameBoard");
+console.log("gameboard", gameBoard);
+
+gameBoard.addEventListener("click", handleTurn);
+
+function handleTurn(event) {
+    var target = parseInt(event.target.id);
+    console.log(target);
+    newGame.toggleTurn();
+}
+
 var playerOne = new Player("one", "emoji", []);
 var playerTwo = new Player("two", "emoji2", []);
 
@@ -12,5 +23,5 @@ playerTwo.saveWinsToStorage(["o", "o", "o", null, "x", null, "x", null, null]);
 
 console.log(playerOne.retrieveWinsFromStorage()); 
 
-var newGame = new Game();
+var newGame = new Game("x");
 newGame.evaluateBoard();
