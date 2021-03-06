@@ -1,16 +1,16 @@
 class Game {
-    constructor(playersTurn) {
-        this.playerOne
-        this.playerTwo
+    constructor(playerOne, playerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
         this.gameBoard = [];
-        this.playersTurn = playersTurn;
+        this.playersTurn = "x";
     }
     evaluateBoard() {
 
         var winningBoards = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], 
         [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
-        for (var i = 0; i < this.gameBoard.length; i++) {
+        for (var i = 0; i < 10; i++) {
             console.log("hello");
             // if ( all three in row the same ) {
             //     winner
@@ -38,7 +38,7 @@ class Game {
         } else {
             this.playersTurn = "x";
         } 
-        console.log(this.playersTurn);
+        //console.log(this.playersTurn);
     }
 
     saveWinToPlayer() {

@@ -14,36 +14,43 @@ gameBoard.addEventListener("keydown", function(event){
 window.addEventListener("load", startGame);
 
 function startGame() {
+    var playerOne = new Player("one", "emoji", []);
+    var playerTwo = new Player("two", "emoji2", []);
+    game = new Game(playerOne, playerTwo)
+ 
     renderWins();
     renderCurrentPlayersTurn();
 }
 
 function renderWins() {
-   var playerOneWins = playerOne.retrieveWinsFromStorage();
-   var playerTwoWins = playerTwo.retrieveWinsFromStorage();
+   var playerOneWins = game.playerOne.retrieveWinsFromStorage();
+   var playerTwoWins = game.playerTwo.retrieveWinsFromStorage();
    //get from storage, print to page
 }
 
 function renderCurrentPlayersTurn() {
-    currentGameState.innerHTML = `${newGame.playersTurn}'s turn`
+    currentGameState.innerHTML = `${game.playersTurn}'s turn`
 }
 
 function handleTurn(event) {
     if (event.target.disabled) {
         return
     }
+    var currentlySelectedBox = parseInt(event.target.id);
+    game.gameBoard.push({
+        arrayIndex: currentlySelectedBox,
+        playerId: game.playersTurn,
+    });
+    game.evaluateBoard();
     event.target.disabled = true;
-    event.target.placeholder = newGame.playersTurn;
-    newGame.toggleTurn();
+    event.target.placeholder = game.playersTurn;
+    game.toggleTurn();
     renderCurrentPlayersTurn();
+    //console.log(event.target.id);
  //console.log("event ", event.target.disabled);
-    var arrayIndex = parseInt(event.target.id);
  //console.log("target ", target);
- //console.log("newGame ", newGame);
+ //console.log("game ", game);
 }
-
-var playerOne = new Player("one", "emoji", []);
-var playerTwo = new Player("two", "emoji2", []);
 
 // console.log(playerOne);
 // playerOne.saveWinsToStorage(['x', 'x', 'x', 'o', 'o', 'x', 'o', 'x', 'o']);
@@ -53,5 +60,16 @@ var playerTwo = new Player("two", "emoji2", []);
 
 // console.log(playerOne.retrieveWinsFromStorage()); 
 
-var newGame = new Game("x");
-newGame.evaluateBoard();
+var game;
+//game.evaluateBoard();
+var newObject = {
+    arrayIndex: 1,
+    playerId: "x"
+}
+
+var emptyObject = {
+    arrayIndex: 7,
+    playerId: null,
+}
+
+var someArray = [newObject, emptyObject]
