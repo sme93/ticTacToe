@@ -3,6 +3,8 @@ var game;
 var gameBoard = document.querySelector("#gameBoard");
 var currentGameState = document.querySelector("#currentGameState");
 var gameBoardInputs = document.querySelectorAll("input");
+var playerOneWinningBoards = document.querySelector("#player1WinningBoards");
+var playerTwoWinningBoards = document.querySelector("#player2WinningBoards");
 
 
 
@@ -27,8 +29,22 @@ function renderWins() {
    var playerOneWins = game.playerOne.retrieveWinsFromStorage();
    var playerTwoWins = game.playerTwo.retrieveWinsFromStorage();
    console.log(playerOneWins[0]);
-//    console.log(playerTwoWins);
-   //get from storage, print to page
+    var markup = "";
+
+   markup += `
+   <div class="game-board>
+    <div data-cell-index="0" class="cell"></div>
+    <div data-cell-index="1" class="cell"></div>
+    <div data-cell-index="2" class="cell"></div>
+    <div data-cell-index="3" class="cell"></div>
+    <div data-cell-index="4" class="cell"></div>
+    <div data-cell-index="5" class="cell"></div>
+    <div data-cell-index="6" class="cell"></div>
+    <div data-cell-index="7" class="cell"></div>
+    <div data-cell-index="8" class="cell"></div>
+   </div>`
+   
+   playerOneWinningBoards.innerHTML = markup;
 }
 
 function resetGameBoard() {

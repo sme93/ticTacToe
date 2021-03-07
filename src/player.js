@@ -20,12 +20,10 @@ class Player {
     retrieveWinsFromStorage() {
         
         var playersWins = `${this.id}-wins`
-        console.log(playersWins);
         var retrievedWins = JSON.parse(localStorage.getItem(playersWins));
         if (!retrievedWins) {
             return [];
         }
         return retrievedWins;
-      
     }
 }
