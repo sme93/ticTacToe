@@ -56,13 +56,15 @@ class Game {
     }
 
     saveWinToPlayer(winningPlayer) {
+        function compareMoves(a, b) {
+            return a.arrayIndex - b.arrayIndex;
+        }
+        this.gameBoard.sort(compareMoves)
         if (winningPlayer === "player one") {
-            console.log("player one");
-            this.playerOne.saveWinsToStorage();
+            this.playerOne.saveWinsToStorage(this.gameBoard);
             this.resetBoard();
         } else {
-            this.playerTwo.saveWinsToStorage();
-            console.log("player two");
+            this.playerTwo.saveWinsToStorage(this.gameBoard);
             this.resetBoard();
         }
     }
