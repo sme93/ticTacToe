@@ -28,23 +28,16 @@ function startGame() {
 function renderWins() {
    var playerOneWins = game.playerOne.retrieveWinsFromStorage();
    var playerTwoWins = game.playerTwo.retrieveWinsFromStorage();
-   console.log(playerOneWins[0]);
-    var markup = "";
-
-   markup += `
-   <div class="game-board>
-    <div data-cell-index="0" class="cell"></div>
-    <div data-cell-index="1" class="cell"></div>
-    <div data-cell-index="2" class="cell"></div>
-    <div data-cell-index="3" class="cell"></div>
-    <div data-cell-index="4" class="cell"></div>
-    <div data-cell-index="5" class="cell"></div>
-    <div data-cell-index="6" class="cell"></div>
-    <div data-cell-index="7" class="cell"></div>
-    <div data-cell-index="8" class="cell"></div>
-   </div>`
+//    var currentWin = playerOneWins[0];
+//     var markup = "";
+//     for (var i = 0; i < 5; i++) {
+//         var currentCellValue = currentWin[i].playerId
+//         markup += `<div data-cell-index=${currentCellValue} class="cell">${currentCellValue}</div>`
+//     }
+ 
    
-   playerOneWinningBoards.innerHTML = markup;
+   playerOneWinningBoards.innerHTML = playerOneWins.length;
+   playerTwoWinningBoards.innerHTML = playerTwoWins.length;
 }
 
 function resetGameBoard() {
