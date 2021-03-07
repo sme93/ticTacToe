@@ -26,6 +26,8 @@ function startGame() {
 function renderWins() {
    var playerOneWins = game.playerOne.retrieveWinsFromStorage();
    var playerTwoWins = game.playerTwo.retrieveWinsFromStorage();
+   console.log(playerOneWins);
+   console.log(playerTwoWins);
    //get from storage, print to page
 }
 

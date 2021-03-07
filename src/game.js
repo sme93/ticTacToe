@@ -36,8 +36,6 @@ class Game {
         playerTwoMoves.sort(compareNumbers);
         var playerOneMovesAsString = playerOneMoves.toString();
         var playerTwoMovesAsString = playerTwoMoves.toString();
-        // console.log("p1", playerOneMovesAsString);
-        // console.log("p2", playerTwoMovesAsString);
 
         for (var i = 0; i < winningBoards.length; i++) {
             if (playerOneMovesAsString.includes(winningBoards[i])) {
@@ -47,8 +45,6 @@ class Game {
                 this.saveWinToPlayer("player two");
             }
         } 
-
-       // if win - call playerone.saveswinstostorage()
     }
 
     toggleTurn() {
@@ -57,7 +53,6 @@ class Game {
         } else {
             this.playersTurn = "x";
         } 
-        //console.log(this.playersTurn);
     }
 
     saveWinToPlayer(winningPlayer) {
