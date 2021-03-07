@@ -58,10 +58,10 @@ class Game {
     saveWinToPlayer(winningPlayer) {
         if (winningPlayer === "player one") {
             console.log("player one");
-            this.playerOne.saveWinsToStorage();
+            this.playerOne.saveWinsToStorage(this.gameBoard);
             this.resetBoard();
         } else {
-            this.playerTwo.saveWinsToStorage();
+            this.playerTwo.saveWinsToStorage(this.gameBoard);
             console.log("player two");
             this.resetBoard();
         }
