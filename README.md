@@ -30,6 +30,8 @@ Do you also enjoy playing tic-tac-toe but think it might detract from your edgin
 ## Author
 
 Sarah Fitzsimons <a href="https://github.com/sme93">GH
+
+
 <img src="https://avatars.githubusercontent.com/u/74980483?s=400&u=666d5f139d0c221d8555a16e7f1b99069b6b9b0b&v=4" alt="S. Fitzsimons" width="125" height="auto" />
 
 ## Technologies
