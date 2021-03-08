@@ -35,15 +35,16 @@ function renderWins() {
 //         markup += `<div data-cell-index=${currentCellValue} class="cell">${currentCellValue}</div>`
 //     }
  
-   
    playerOneWinningBoards.innerHTML = playerOneWins.length;
    playerTwoWinningBoards.innerHTML = playerTwoWins.length;
 }
 
 function resetGameBoard() {
+   
     for (var input of gameBoardInputs) {
         input.disabled = true;
     }
+    
     setTimeout(function () {
         for (var input of gameBoardInputs) {
             input.disabled = false;
@@ -57,7 +58,15 @@ function resetGameBoard() {
 }   
 
 function renderCurrentPlayersTurn() {
-    currentGameState.innerHTML = `${game.playersTurn}'s turn`
+    var playersTurnToken = "";
+    if (game.playersTurn === "one") {
+        playersTurnToken = "&#10006";
+    } else {
+        playersTurnToken = "&#128128";
+    }
+
+    currentGameState.innerHTML = `${playersTurnToken}'s turn`
+
 }
 
 function handleTurn(event) {
