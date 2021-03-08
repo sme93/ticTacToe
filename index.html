@@ -8,12 +8,12 @@
 <body>
     <main class="main">
         <section class="player-section">
-            <h1>Player One</h1>
+            <h1>&#10006</h1>
             <h3><span id="player1Wins"></span> wins</h3>
-            <div id=player1WinningBoards></div>
+            <div class="win-count" id=player1WinningBoards></div>
         </section>
         <section class="game-board">
-            <h2 id="currentGameState"></h2>
+            <h3 id="currentGameState"></h3>
             <form class="grid" action="index.html" id="gameBoard">
                 <label class="visually-hidden" for="0"></label>
                 <input class="cell" type="text" id="0">
@@ -36,9 +36,9 @@
             </form>
         </section>
         <section class="player-section">
-            <h1>Player Two</h1>
+            <h1>&#128128</h1>
             <h3><span id="player2Wins"></span> wins</h3>
-            <div id=player2WinningBoards></div>
+            <div class="win-count" id=player2WinningBoards></div>
         </section>
     </main>
     <script src="./src/game.js"></script>
