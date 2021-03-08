@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 <body>
-    <main>
-        <section>
-            <h1>Player One</h1>
+    <main class="main">
+        <section class="player-section">
+            <h1>&#10006</h1>
             <h3><span id="player1Wins"></span> wins</h3>
-            <div id=player1WinningBoards></div>
+            <div class="win-count" id=player1WinningBoards></div>
         </section>
-        <section>
-            <h2 id="currentGameState"></h2>
-            <form action="index.html" id="gameBoard">
-                <label for="0"></label>
-                <input type="text" id="0">
-                <label for="1"></label>
-                <input type="text" id="1">
-                <label for="2"></label>
-                <input type="text" id="2">
-                <label for="3"></label>
-                <input type="text" id="3">
-                <label for="4"></label>
-                <input type="text" id="4">
-                <label for="5"></label>
-                <input type="text" id="5">
-                <label for="6"></label>
-                <input type="text" id="6">
-                <label for="7"></label>
-                <input type="text" id="7">
-                <label for="8"></label>
-                <input type="text" id="8">
+        <section class="game-board">
+            <h3 id="currentGameState"></h3>
+            <form class="grid" action="index.html" id="gameBoard">
+                <label class="visually-hidden" for="0"></label>
+                <input class="cell" type="text" id="0">
+                <label class="visually-hidden" for="1"></label>
+                <input class="cell" type="text" id="1">
+                <label class="visually-hidden" for="2"></label>
+                <input class="cell" type="text" id="2">
+                <label class="visually-hidden" for="3"></label>
+                <input class="cell" type="text" id="3">
+                <label class="visually-hidden" for="4"></label>
+                <input class="cell" type="text" id="4">
+                <label class="visually-hidden" for="5"></label>
+                <input class="cell" type="text" id="5">
+                <label class="visually-hidden" for="6"></label>
+                <input class="cell" type="text" id="6">
+                <label class="visually-hidden" for="7"></label>
+                <input class="cell" type="text" id="7">
+                <label class="visually-hidden" for="8"></label>
+                <input class="cell" type="text" id="8">
             </form>
         </section>
-        <section>
-            <h1>Player Two</h1>
+        <section class="player-section">
+            <h1>&#128128</h1>
             <h3><span id="player2Wins"></span> wins</h3>
-            <div id=player2WinningBoards></div>
+            <div class="win-count" id=player2WinningBoards></div>
         </section>
     </main>
     <script src="./src/game.js"></script>

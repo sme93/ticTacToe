@@ -3,7 +3,7 @@ class Game {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         this.gameBoard = [];
-        this.playersTurn = "x";
+        this.playersTurn = "one";
     }
     evaluateBoard() {
         if (this.gameBoard.length < 5) {
@@ -23,7 +23,7 @@ class Game {
         var playerOneMoves = [];
         var playerTwoMoves = [];
         for (var i = 0; i < this.gameBoard.length; i++) {
-            if (this.gameBoard[i].playerId === "x") {
+            if (this.gameBoard[i].playerId === "one") {
                 playerOneMoves.push(this.gameBoard[i].arrayIndex);
             } else {
                 playerTwoMoves.push(this.gameBoard[i].arrayIndex);
@@ -48,10 +48,10 @@ class Game {
     }
 
     toggleTurn() {
-        if (this.playersTurn === "x") {
-            this.playersTurn = "o";
+        if (this.playersTurn === "one") {
+            this.playersTurn = "two";
         } else {
-            this.playersTurn = "x";
+            this.playersTurn = "one";
         } 
     }
 
@@ -70,7 +70,7 @@ class Game {
     }
 
     resetBoard() {
-        this.gameBoard = [];
+      this.gameBoard = [];
         console.log("reset board");
     }
 }

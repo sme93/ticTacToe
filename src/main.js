@@ -17,8 +17,8 @@ gameBoard.addEventListener("keydown", function(event){
 window.addEventListener("load", startGame);
 
 function startGame() {
-    var playerOne = new Player("one", "emoji");
-    var playerTwo = new Player("two", "emoji2");
+    var playerOne = new Player("one", "0x2716");
+    var playerTwo = new Player("two", "0x1F480");
     game = new Game(playerOne, playerTwo)
  
     renderWins();
@@ -35,21 +35,38 @@ function renderWins() {
 //         markup += `<div data-cell-index=${currentCellValue} class="cell">${currentCellValue}</div>`
 //     }
  
-   
    playerOneWinningBoards.innerHTML = playerOneWins.length;
    playerTwoWinningBoards.innerHTML = playerTwoWins.length;
 }
 
 function resetGameBoard() {
+   
     for (var input of gameBoardInputs) {
-       input.disabled = false; 
-       input.placeholder = "";
+        input.disabled = true;
     }
-    game.playersTurn = "x";
-}
+    
+    setTimeout(function () {
+        for (var input of gameBoardInputs) {
+            input.disabled = false;
+            input.value = "";
+        }
+        game.playersTurn = game.playerOne.id;
+        console.log(game.playerOne);
+        renderWins();
+    
+    }, 5000);
+}   
 
 function renderCurrentPlayersTurn() {
-    currentGameState.innerHTML = `${game.playersTurn}'s turn`
+    var playersTurnToken = "";
+    if (game.playersTurn === "one") {
+        playersTurnToken = "&#10006";
+    } else {
+        playersTurnToken = "&#128128";
+    }
+
+    currentGameState.innerHTML = `${playersTurnToken}'s turn`
+
 }
 
 function handleTurn(event) {
@@ -62,7 +79,14 @@ function handleTurn(event) {
         playerId: game.playersTurn,
     });
     event.target.disabled = true;
-    event.target.placeholder = game.playersTurn;
+    console.log(game.playersTurn);
+    var playersTurnToken = "";
+    if (game.playersTurn === "one") {
+        playersTurnToken = game.playerOne.token;
+    } else {
+        playersTurnToken = game.playerTwo.token;
+    }
+    event.target.value = String.fromCodePoint(playersTurnToken);
     game.toggleTurn();
     game.evaluateBoard();
     if (game.gameBoard.length === 0) {
