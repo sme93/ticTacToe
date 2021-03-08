@@ -17,8 +17,8 @@ gameBoard.addEventListener("keydown", function(event){
 window.addEventListener("load", startGame);
 
 function startGame() {
-    var playerOne = new Player("one", "emoji");
-    var playerTwo = new Player("two", "emoji2");
+    var playerOne = new Player("one", "x");
+    var playerTwo = new Player("two", "o");
     game = new Game(playerOne, playerTwo)
  
     renderWins();
@@ -46,6 +46,7 @@ function resetGameBoard() {
        input.placeholder = "";
     }
     game.playersTurn = "x";
+    renderWins();
 }
 
 function renderCurrentPlayersTurn() {
@@ -62,7 +63,7 @@ function handleTurn(event) {
         playerId: game.playersTurn,
     });
     event.target.disabled = true;
-    event.target.placeholder = game.playersTurn;
+    event.target.value = String.fromCodePoint(game.playerTwo.token);
     game.toggleTurn();
     game.evaluateBoard();
     if (game.gameBoard.length === 0) {
