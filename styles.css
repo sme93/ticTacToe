@@ -58,7 +58,10 @@ h3 {
   align-items: center;
 }
 
+
 .win-count {
   font-size: 25px;
   font-weight: bold;
-}
+  text-shadow: 0 0 3px #660000, 0 0 5px #CBD0D3;
+} 
+
