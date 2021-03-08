@@ -42,13 +42,19 @@ function renderWins() {
 
 function resetGameBoard() {
     for (var input of gameBoardInputs) {
-       input.disabled = false; 
-       input.placeholder = "";
+        input.disabled = true;
     }
-    game.playersTurn = game.playerOne.id;
-    console.log(game.playerOne);
-    renderWins();
-}
+    setTimeout(function () {
+        for (var input of gameBoardInputs) {
+            input.disabled = false;
+            input.value = "";
+        }
+        game.playersTurn = game.playerOne.id;
+        console.log(game.playerOne);
+        renderWins();
+    
+    }, 5000);
+}   
 
 function renderCurrentPlayersTurn() {
     currentGameState.innerHTML = `${game.playersTurn}'s turn`
