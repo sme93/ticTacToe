@@ -64,8 +64,14 @@ function handleTurn(event) {
         playerId: game.playersTurn,
     });
     event.target.disabled = true;
-    console.log(game.playersTurn.token);
-    event.target.value = String.fromCodePoint(game.playerTwo.token);
+    console.log(game.playersTurn);
+    var playersTurnToken = "";
+    if (game.playersTurn === "one") {
+        playersTurnToken = game.playerOne.token;
+    } else {
+        playersTurnToken = game.playerTwo.token;
+    }
+    event.target.value = String.fromCodePoint(playersTurnToken);
     game.toggleTurn();
     game.evaluateBoard();
     if (game.gameBoard.length === 0) {
