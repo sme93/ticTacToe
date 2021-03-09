@@ -28,22 +28,25 @@ function startGame() {
 function renderWins() {
    var playerOneWins = game.playerOne.retrieveWinsFromStorage();
    var playerTwoWins = game.playerTwo.retrieveWinsFromStorage();
-//    var currentWin = playerOneWins[0];
-//     var markup = "";
-//     for (var i = 0; i < 5; i++) {
-//         var currentCellValue = currentWin[i].playerId
-//         markup += `<div data-cell-index=${currentCellValue} class="cell">${currentCellValue}</div>`
-//     }
- 
+
    playerOneWinningBoards.innerHTML = playerOneWins.length;
    playerTwoWinningBoards.innerHTML = playerTwoWins.length;
 }
 
-function resetGameBoard() {
-   
+function renderWinner() {
+    if (game.playersTurn === "one") {
+        currentGameState.innerHTML = `${String.fromCodePoint(game.playerTwo.token)} wins`;
+    } else {
+        currentGameState.innerHTML = `${String.fromCodePoint(game.playerOne.token)} wins`;
+    }
+
     for (var input of gameBoardInputs) {
         input.disabled = true;
     }
+}
+
+function resetGameBoard() {
+    renderWinner();
     
     setTimeout(function () {
         for (var input of gameBoardInputs) {
@@ -51,21 +54,20 @@ function resetGameBoard() {
             input.value = "";
         }
         game.playersTurn = game.playerOne.id;
-        console.log(game.playerOne);
         renderWins();
-    
+        renderCurrentPlayersTurn();
     }, 5000);
 }   
 
 function renderCurrentPlayersTurn() {
     var playersTurnToken = "";
     if (game.playersTurn === "one") {
-        playersTurnToken = "&#10006";
+        playersTurnToken = game.playerOne.token;
     } else {
-        playersTurnToken = "&#128128";
+        playersTurnToken = game.playerTwo.token;
     }
 
-    currentGameState.innerHTML = `${playersTurnToken}'s turn`
+    currentGameState.innerHTML = `${String.fromCodePoint(playersTurnToken)}'s turn`
 
 }
 
@@ -79,7 +81,6 @@ function handleTurn(event) {
         playerId: game.playersTurn,
     });
     event.target.disabled = true;
-    console.log(game.playersTurn);
     var playersTurnToken = "";
     if (game.playersTurn === "one") {
         playersTurnToken = game.playerOne.token;
@@ -91,8 +92,9 @@ function handleTurn(event) {
     game.evaluateBoard();
     if (game.gameBoard.length === 0) {
         resetGameBoard();
+    } else {
+        renderCurrentPlayersTurn();
     }
-    renderCurrentPlayersTurn();
 }
 
 
