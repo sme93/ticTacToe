@@ -34,8 +34,12 @@ function renderWins() {
 function renderWinner() {
     if (game.playersTurn === "one") {
         currentGameState.innerHTML = `${String.fromCodePoint(game.playerTwo.token)} wins`;
-    } else {
+    } 
+    if (game.playersTurn === "two") {
         currentGameState.innerHTML = `${String.fromCodePoint(game.playerOne.token)} wins`;
+    }
+    if (game.playersTurn === "draw") {
+        currentGameState.innerHTML = `It's a Draw!`;
     }
 
     for (var input of gameBoardInputs) {

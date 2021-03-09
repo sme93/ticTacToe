@@ -5,6 +5,7 @@ class Game {
         this.gameBoard = [];
         this.playersTurn = "one";
     }
+
     evaluateBoard() {
         if (this.gameBoard.length < 5) {
             return;
@@ -36,16 +37,23 @@ class Game {
         playerTwoMoves.sort(compareNumbers);
         var playerOneMovesAsString = playerOneMoves.toString();
         var playerTwoMovesAsString = playerTwoMoves.toString();
-
+        var isDraw = true;
         for (var i = 0; i < winningBoards.length; i++) {
             if (playerOneMovesAsString.includes(winningBoards[i])) {
                this.saveWinToPlayer("player one");
+               isDraw = false;
             }
             if (playerTwoMovesAsString.includes(winningBoards[i])) {
                 this.saveWinToPlayer("player two");
+                isDraw = false;
             }
-        } 
+        }   
+        if (this.gameBoard.length === 9 && isDraw) {
+            this.resetBoard();
+            this.playersTurn = "draw";
+        }
     }
+
 
     toggleTurn() {
         if (this.playersTurn === "one") {
@@ -71,17 +79,6 @@ class Game {
 
     resetBoard() {
       this.gameBoard = [];
-        console.log("reset board");
     }
 }
 
-
-
-// A Game should include:
-// Two Player instances x
-// A way to keep track of the data for the game board x
-// A way to keep track of which player’s turn it currently is x
-// A way to check the Game’s board data for win conditions x
-// A way to detect when a game is a draw(no one has won) x
-// A way to save a winning Game’s board data to the correct player’s wins array x
-// A way to reset the Game’s board to begin a new game x
