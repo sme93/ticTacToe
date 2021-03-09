@@ -11,7 +11,7 @@
 
 Do you often consider your own mortality, or perhaps listen to copious amounts of heavy metal? Maybe you just like human anatomy! 
 Do you also enjoy playing tic-tac-toe but think it might detract from your edginess? 
-✖︎ vs 💀 is a new version of the classic tic-tac-toe game built just for users like you! 
+✖︎ vs 💀 is a new version of the classic tic-tac-toe game built just for folks like you! 
 
 ## Installation
 1. Fork this repo

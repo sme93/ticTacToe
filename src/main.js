@@ -6,8 +6,6 @@ var gameBoardInputs = document.querySelectorAll("input");
 var playerOneWinningBoards = document.querySelector("#player1WinningBoards");
 var playerTwoWinningBoards = document.querySelector("#player2WinningBoards");
 
-
-
 gameBoard.addEventListener("click", handleTurn);
 gameBoard.addEventListener("keydown", function(event){
     if (event.code === "Space") {
@@ -28,22 +26,29 @@ function startGame() {
 function renderWins() {
    var playerOneWins = game.playerOne.retrieveWinsFromStorage();
    var playerTwoWins = game.playerTwo.retrieveWinsFromStorage();
-//    var currentWin = playerOneWins[0];
-//     var markup = "";
-//     for (var i = 0; i < 5; i++) {
-//         var currentCellValue = currentWin[i].playerId
-//         markup += `<div data-cell-index=${currentCellValue} class="cell">${currentCellValue}</div>`
-//     }
- 
+
    playerOneWinningBoards.innerHTML = playerOneWins.length;
    playerTwoWinningBoards.innerHTML = playerTwoWins.length;
 }
 
-function resetGameBoard() {
-   
+function renderWinner() {
+    if (game.playersTurn === "one") {
+        currentGameState.innerHTML = `${String.fromCodePoint(game.playerTwo.token)} wins`;
+    } 
+    if (game.playersTurn === "two") {
+        currentGameState.innerHTML = `${String.fromCodePoint(game.playerOne.token)} wins`;
+    }
+    if (game.playersTurn === "draw") {
+        currentGameState.innerHTML = `It's a Draw!`;
+    }
+
     for (var input of gameBoardInputs) {
         input.disabled = true;
     }
+}
+
+function resetGameBoard() {
+    renderWinner();
     
     setTimeout(function () {
         for (var input of gameBoardInputs) {
@@ -51,49 +56,47 @@ function resetGameBoard() {
             input.value = "";
         }
         game.playersTurn = game.playerOne.id;
-        console.log(game.playerOne);
         renderWins();
-    
+        renderCurrentPlayersTurn();
     }, 5000);
 }   
 
 function renderCurrentPlayersTurn() {
-    var playersTurnToken = "";
-    if (game.playersTurn === "one") {
-        playersTurnToken = "&#10006";
-    } else {
-        playersTurnToken = "&#128128";
-    }
-
-    currentGameState.innerHTML = `${playersTurnToken}'s turn`
-
+    currentGameState.innerHTML = `${String.fromCodePoint(getCurrentPlayersToken())}'s turn`;
 }
 
-function handleTurn(event) {
-    if (event.target.disabled) {
-        return
-    }
-    var currentlySelectedBox = parseInt(event.target.id);
-    game.gameBoard.push({
-        arrayIndex: currentlySelectedBox,
-        playerId: game.playersTurn,
-    });
-    event.target.disabled = true;
-    console.log(game.playersTurn);
+function getCurrentPlayersToken() {
     var playersTurnToken = "";
     if (game.playersTurn === "one") {
         playersTurnToken = game.playerOne.token;
     } else {
         playersTurnToken = game.playerTwo.token;
     }
-    event.target.value = String.fromCodePoint(playersTurnToken);
+
+    return playersTurnToken;
+}
+
+function saveMove(event) {
+    var currentlySelectedBox = parseInt(event.target.id);
+    game.gameBoard.push({
+        arrayIndex: currentlySelectedBox,
+        playerId: game.playersTurn,
+    });
+    event.target.disabled = true;
+    event.target.value = String.fromCodePoint(getCurrentPlayersToken());
+}
+
+function handleTurn(event) {
+    if (event.target.disabled) {
+        return;
+    }
+
+    saveMove(event);
     game.toggleTurn();
     game.evaluateBoard();
     if (game.gameBoard.length === 0) {
         resetGameBoard();
+    } else {
+        renderCurrentPlayersTurn();
     }
-    renderCurrentPlayersTurn();
 }
-
-
-
