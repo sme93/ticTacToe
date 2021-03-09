@@ -20,11 +20,13 @@ Do you also enjoy playing tic-tac-toe but think it might detract from your edgin
 4. Run "index.html"
 
 ## Walkthrough
+This tic-tac-toe game can be played two different ways. You can click the cell you wish to play when it's your turn. Alternatively, use the tab key to move around the gameboard, hitting the space bar to select the cell with your token. Once a player acheives a win, all the cells are disabled, and the winner is declared. There is a 5 second hold before the game reloads and the winner's tally is updated. 
 
+![screen capture of site](https://media.giphy.com/media/ohJuJ2wK243hBeTphM/giphy.gif)
 
+If there isn't a winner for the game, it's declared a draw. Again, there is a 5 second hold before the game resets. 
 
-
-
+![screen capture of site](https://media.giphy.com/media/ZQmbvdRylfb4AgRJMB/giphy.gif)
 
 
 ## Author
