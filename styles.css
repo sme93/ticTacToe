@@ -1,6 +1,7 @@
 .main {
   background: linear-gradient(to bottom, #b30000 0%, #000000 100%);
   display: flex;
+  min-height: 100vh;
 }
 
 h1 {
