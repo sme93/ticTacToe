@@ -17,7 +17,7 @@ window.addEventListener("load", startGame);
 function startGame() {
     var playerOne = new Player("one", "0x2716");
     var playerTwo = new Player("two", "0x1F480");
-    game = new Game(playerOne, playerTwo)
+    game = new Game(playerOne, playerTwo);
  
     renderWins();
     renderCurrentPlayersTurn();
@@ -33,10 +33,10 @@ function renderWins() {
 
 function renderWinner() {
     if (game.playersTurn === "one") {
-        currentGameState.innerHTML = `${String.fromCodePoint(game.playerTwo.token)} wins`;
+        currentGameState.innerHTML = `${String.fromCodePoint(game.playerOne.token)} wins`;
     } 
     if (game.playersTurn === "two") {
-        currentGameState.innerHTML = `${String.fromCodePoint(game.playerOne.token)} wins`;
+        currentGameState.innerHTML = `${String.fromCodePoint(game.playerTwo.token)} wins`;
     }
     if (game.playersTurn === "draw") {
         currentGameState.innerHTML = `It's a Draw!`;
@@ -92,11 +92,11 @@ function handleTurn(event) {
     }
 
     saveMove(event);
-    game.toggleTurn();
     game.evaluateBoard();
     if (game.gameBoard.length === 0) {
         resetGameBoard();
     } else {
+        game.toggleTurn();
         renderCurrentPlayersTurn();
     }
 }
